@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sinus Prospect</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f3ece0; /* alternatives: #f3efe7 , #f1e9dc, #f2ecdf, #f0eade */
+      font-family: Georgia, serif;
+      color: #222;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    header h2 {
+      font-size: 1.5rem;
+      font-weight: normal;
+      margin-top: 0.5rem;
+    }
+
+    .splash {
+      background-color: #ffffff; /* White splash */
+      border-radius: 60px;
+      padding: 3rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .splash img {
+      max-width: 300px;
+      height: auto;
+    }
+
+    .text-area {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .search-section {
+      display: flex;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    .search-section input {
+      padding: 0.6rem 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+      width: 70%;
+    }
+
+    .search-section button {
+      background-color: #d8572a;
+      color: white;
+      border: none;
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .chart-placeholder {
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .chart-placeholder img {
+      width: 100%;
+      max-width: 600px;
+      /* border-radius: 4px; */
+      /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); */
+    }
+    .main-heading {
+      font-size: 2rem;
+      margin: 3rem 0 1rem;
+    }
+    .analysis-section {
+      /* display: flex;
+      gap: 2rem;
+      align-items: flex-start; */
+      margin-top: 3rem;
+      /* flex-wrap: wrap; */
+    }
+
+    .text-column {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .chart-column {
+      flex: 1;
+      max-width: 600px;
+    }
+
+    .chart-column img {
+      width: 80%;
+      height: auto;
+    }
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Sinus Prospect</h1>
+      <h2>KI-basert finansiell analyse av selskaper</h2>
+    </header>
+
+    <section class="splash">
+      <img src="octopus.png" alt="Sinus the Octopus" />
+      <div class="text-area">
+        <div class="search-section">
+          <input type="text" placeholder="Søke selskaper" />
+          <button>🔍</button>
+        </div>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+          condimentum lorem nec ultricies vulputate. Integer quis augue sed
+          velit fermentum. Pellentesque habitant morbi tristique senectus et netus.
+        </p>
+      </div>
+    </section>
+
+    <!-- New Section: Selskapsanalyse -->
+    <section class="analysis-section">
+      <div class="text-column">
+        <h1 class="main-heading">Selskapsanalyse</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio.
+          Praesent libero. Sed cursus ante dapibus diam...
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dignissim, nulla sed fringilla facilisis, 
+          sapien risus faucibus nisi, nec euismod tortor arcu vel libero. Suspendisse potenti. Cras in arcu eros. 
+          In vel leo vel justo aliquam tincidunt. Pellentesque habitant morbi tristique senectus et netus et 
+          malesuada fames ac turpis egestas. Sed porta, justo ac dictum lacinia, urna odio fermentum nunc, nec 
+          elementum nunc lacus ut justo. Duis dapibus sodales nibh, non malesuada metus volutpat vitae. Aenean 
+          accumsan sapien eget tristique ullamcorper.
+        </p>
+
+        <p>
+          Fusce nec tristique lorem. Curabitur vitae libero vitae enim sagittis feugiat. Integer fringilla laoreet 
+          neque, in vestibulum lorem dapibus ut. In eget arcu vel magna rhoncus imperdiet. Sed nec dapibus lorem. 
+          Nullam euismod mi vel eros viverra, nec tincidunt risus sodales. Etiam in diam vitae ligula vestibulum 
+          scelerisque. Suspendisse potenti. Praesent lobortis sapien eget turpis laoreet finibus. Pellentesque 
+          habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+        </p>
+        <p>
+          Class aptent taciti sociosqu ad litora torquent per conubia nostra...
+        </p>
+      </div>
+      <div class="chart-column">
+        <img src="graph.png" alt="Example financial graph" />
+      </div>
+      <div class="text-column">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio.
+          Praesent libero. Sed cursus ante dapibus diam...
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dignissim, nulla sed fringilla facilisis, 
+          sapien risus faucibus nisi, nec euismod tortor arcu vel libero. Suspendisse potenti. Cras in arcu eros. 
+          In vel leo vel justo aliquam tincidunt. Pellentesque habitant morbi tristique senectus et netus et 
+          malesuada fames ac turpis egestas. Sed porta, justo ac dictum lacinia, urna odio fermentum nunc, nec 
+          elementum nunc lacus ut justo. Duis dapibus sodales nibh, non malesuada metus volutpat vitae. Aenean 
+          accumsan sapien eget tristique ullamcorper.
+        </p>
+
+    </section>
+
+  </div>
+</body>
+</html>
