@@ -178,7 +178,37 @@
     }
 
 
-  </style>
+  
+    /* Autocomplete suggestions dropdown */
+    .search-section {
+      position: relative; /* to contain the absolute dropdown */
+    }
+    .suggestions-list {
+      display: none; /* hidden by default */
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%; /* match input width */
+      margin-top: 0.3rem;
+      list-style: none;
+      padding: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-top: none;
+      max-height: 150px;
+      overflow-y: auto;
+      background-color: white;
+      z-index: 10;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      max-width: 432px;
+    }
+    .suggestions-list li {
+      padding: 0.4rem 1rem;
+      cursor: pointer;
+    }
+    .suggestions-list li:hover {
+      background-color: #f3ece0;
+    }
+</style>
 </head>
 <body>
   <div class="container">
@@ -199,8 +229,9 @@
       <img src="octopus.png" alt="Sinus the Octopus" />
       <div class="text-area">
         <div class="search-section">
-          <input type="text" placeholder="Søke selskaper" />
+          <input type="text" id="search-input" type="text" placeholder="Søke selskaper" / autocomplete="off" />
           <button>🔍</button>
+          <ul id="suggestions" class="suggestions-list"></ul>
         </div>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
@@ -258,5 +289,47 @@
     </section>
 
   </div>
+
+  <script>
+    const companies = [
+      { Organisasjonsnummer: "91023847", Navn: "Equinor" },
+      { Organisasjonsnummer: "96483421", Navn: "DNB ASA" },
+      { Organisasjonsnummer: "97103922", Navn: "Norsk Hydro" },
+      { Organisasjonsnummer: "98076415", Navn: "Telenor" },
+      { Organisasjonsnummer: "98230567", Navn: "Yara International" }
+    ];
+    const input = document.getElementById('search-input');
+    const suggestions = document.getElementById('suggestions');
+    input.addEventListener('input', () => {
+      const q = input.value.toLowerCase().trim();
+      suggestions.innerHTML = '';
+      if (!q) {
+        suggestions.style.display = 'none';
+        return;
+      }
+      const matches = companies.filter(c =>
+        c.Navn.toLowerCase().includes(q)
+      ).slice(0, 4);
+      if (matches.length === 0) {
+        suggestions.style.display = 'none';
+        return;
+      }
+      matches.forEach(c => {
+        const li = document.createElement('li');
+        li.textContent = c.Navn;
+        li.addEventListener('click', () => {
+          input.value = c.Navn;
+          suggestions.style.display = 'none';
+        });
+        suggestions.appendChild(li);
+      });
+      suggestions.style.display = 'block';
+    });
+    document.addEventListener('click', e => {
+      if (!input.contains(e.target) && !suggestions.contains(e.target)) {
+        suggestions.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>
