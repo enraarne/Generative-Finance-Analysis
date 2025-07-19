@@ -46,17 +46,6 @@
       background-color: transparent; /* keep it clean */
     }
 
-
-    /* .main-nav a {
-      text-decoration: none;
-      font-family: Georgia, serif;
-      font-size: 1.4rem;
-      font-weight: 500;
-      color: #333;
-      position: relative;
-      padding-bottom: 0.2rem;
-    } */
-
     .main-nav a::after {
       content: '';
       position: absolute;
@@ -100,8 +89,6 @@
       align-items: center;
       gap: 2rem;
       flex-wrap: wrap;
-      /* height: 450px;
-      overflow: hidden; */
     }
 
     .splash img {
@@ -118,6 +105,7 @@
       display: flex;
       gap: 0.5rem;
       margin: 1rem 0;
+      position: relative; /* to contain dropdown */
     }
 
     .search-section input {
@@ -128,6 +116,11 @@
       width: 70%;
     }
 
+    /* .search-section input:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px #584fa4;
+    } */
+
     .search-section button {
       background-color: #d8572a;
       color: white;
@@ -136,6 +129,33 @@
       font-size: 1rem;
       border-radius: 4px;
       cursor: pointer;
+    }
+
+    /* Autocomplete suggestions dropdown */
+    .suggestions-list {
+      display: none; /* hidden by default */
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%; /* match input width */
+      margin-top: 0.3rem;
+      list-style: none;
+      padding: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-top: none;
+      max-height: 150px;
+      overflow-y: auto;
+      background-color: white;
+      z-index: 10;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      max-width: 432px;
+    }
+    .suggestions-list li {
+      padding: 0.4rem 1rem;
+      cursor: pointer;
+    }
+    .suggestions-list li:hover {
+      background-color: #f3ece0;
     }
 
     .chart-placeholder {
@@ -171,6 +191,7 @@
       width: 80%;
       height: auto;
     }
+
     @media (min-width: 801px) {
       .splash {
         height: 450px;
@@ -199,48 +220,7 @@
         margin-bottom: 1rem;
       }
     }
-    /* @media (max-width: 800px) {  
-      .main-nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-      }
-      .splash img {
-        margin-bottom: 1rem;
-    } */
-
-
-  
-    /* Autocomplete suggestions dropdown */
-    .search-section {
-      position: relative; /* to contain the absolute dropdown */
-    }
-    .suggestions-list {
-      display: none; /* hidden by default */
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%; /* match input width */
-      margin-top: 0.3rem;
-      list-style: none;
-      padding: 0.5rem 0;
-      border: 1px solid #ccc;
-      border-top: none;
-      max-height: 150px;
-      overflow-y: auto;
-      background-color: white;
-      z-index: 10;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      max-width: 432px;
-    }
-    .suggestions-list li {
-      padding: 0.4rem 1rem;
-      cursor: pointer;
-    }
-    .suggestions-list li:hover {
-      background-color: #f3ece0;
-    }
-</style>
+  </style>
 </head>
 <body>
   <div class="container">
@@ -261,7 +241,7 @@
       <img src="octopus_cropped.png" alt="Sinus the Octopus" />
       <div class="text-area">
         <div class="search-section">
-          <input type="text" id="search-input" type="text" placeholder="Søke selskaper" / autocomplete="off" />
+          <input type="text" id="search-input" placeholder="Søke selskaper" autocomplete="off" />
           <button>🔍</button>
           <ul id="suggestions" class="suggestions-list"></ul>
         </div>
@@ -324,11 +304,26 @@
 
   <script>
     const companies = [
-      { Organisasjonsnummer: "91023847", Navn: "Equinor" },
-      { Organisasjonsnummer: "96483421", Navn: "DNB ASA" },
-      { Organisasjonsnummer: "97103922", Navn: "Norsk Hydro" },
-      { Organisasjonsnummer: "98076415", Navn: "Telenor" },
-      { Organisasjonsnummer: "98230567", Navn: "Yara International" }
+      { "Organisasjonsnummer": "923609016", "Navn": "Equinor ASA" },
+      { "Organisasjonsnummer": "984851006", "Navn": "DNB Bank ASA" },
+      { "Organisasjonsnummer": "914778271", "Navn": "Norsk Hydro ASA" },
+      { "Organisasjonsnummer": "982463718", "Navn": "Telenor ASA" },
+      { "Organisasjonsnummer": "986228608", "Navn": "Yara International ASA" },
+      { "Organisasjonsnummer": "910747711", "Navn": "Orkla ASA" },
+      { "Organisasjonsnummer": "943753709", "Navn": "Kongsberg Gruppen ASA" },
+      { "Organisasjonsnummer": "964118191", "Navn": "Mowi ASA" },
+      { "Organisasjonsnummer": "916300484", "Navn": "Storebrand ASA" },
+      { "Organisasjonsnummer": "936742475", "Navn": "Subsea 7 Norway AS" },
+      { "Organisasjonsnummer": "960659643", "Navn": "Frontline AS" },
+      { "Organisasjonsnummer": "927124238", "Navn": "Tomra Systems ASA" },
+      { "Organisasjonsnummer": "960514718", "Navn": "SalMar ASA" },
+      { "Organisasjonsnummer": "989795848", "Navn": "Aker BP ASA" },
+      { "Organisasjonsnummer": "995568217", "Navn": "Gjensidige Forsikring ASA" },
+      { "Organisasjonsnummer": "920237126", "Navn": "Atea ASA" },
+      { "Organisasjonsnummer": "997602234", "Navn": "Crayon Group Holding ASA" },
+      { "Organisasjonsnummer": "966011726", "Navn": "Nordic Semiconductor ASA" },
+      { "Organisasjonsnummer": "933739384", "Navn": "Schibsted ASA" },
+      { "Organisasjonsnummer": "913748174", "Navn": "Aker Solutions ASA" }
     ];
     const input = document.getElementById('search-input');
     const suggestions = document.getElementById('suggestions');
@@ -339,18 +334,19 @@
         suggestions.style.display = 'none';
         return;
       }
-      const matches = companies.filter(c =>
-        c.Navn.toLowerCase().includes(q)
-      ).slice(0, 4);
+      const matches = companies
+        .map(c => ({ ...c, display: `${c.Organisasjonsnummer} - ${c.Navn}` }))
+        .filter(c => c.display.toLowerCase().includes(q))
+        .slice(0, 4);
       if (matches.length === 0) {
         suggestions.style.display = 'none';
         return;
       }
       matches.forEach(c => {
         const li = document.createElement('li');
-        li.textContent = c.Navn;
+        li.textContent = c.display;
         li.addEventListener('click', () => {
-          input.value = c.Navn;
+          input.value = c.display;
           suggestions.style.display = 'none';
         });
         suggestions.appendChild(li);
