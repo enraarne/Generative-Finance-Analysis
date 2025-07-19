@@ -100,6 +100,8 @@
       align-items: center;
       gap: 2rem;
       flex-wrap: wrap;
+      /* height: 450px;
+      overflow: hidden; */
     }
 
     .splash img {
@@ -169,13 +171,39 @@
       width: 80%;
       height: auto;
     }
-    @media (max-width: 800px) {  /* 600 */
+    @media (min-width: 801px) {
+      .splash {
+        height: 450px;
+        overflow: hidden;
+      }
+    }
+    @media (max-width: 800px) {
+      .splash {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+      }
+
+      .text-area {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .splash img {
+        margin-bottom: 1rem;
+      }
+    }
+    /* @media (max-width: 800px) {  
       .main-nav ul {
         flex-direction: column;
         align-items: center;
         gap: 1rem;
       }
-    }
+      .splash img {
+        margin-bottom: 1rem;
+    } */
 
 
   
@@ -226,7 +254,7 @@
       </nav>
     <br>
     <section class="splash">
-      <img src="octopus.png" alt="Sinus the Octopus" />
+      <img src="octopus_cropped.png" alt="Sinus the Octopus" />
       <div class="text-area">
         <div class="search-section">
           <input type="text" id="search-input" type="text" placeholder="Søke selskaper" / autocomplete="off" />
