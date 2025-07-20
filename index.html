@@ -191,13 +191,55 @@
       width: 80%;
       height: auto;
     }
-
-    @media (min-width: 801px) {
-      .splash {
-        height: 450px;
-        overflow: hidden;
-      }
+    
+    /* Styled indicator list */
+    .indicator-list {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
     }
+
+    .indicator-list li {
+      background-color: #ffffff;
+      /*border: none; */
+      border: 1px solid #222;
+      border-radius: 12px;
+      padding: 1rem;
+      /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); */
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06); /* subtle shadow */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      text-align: center;
+      transition: background-color 0.2s ease, box-shadow 0.2s ease;
+      min-height: 100px;
+    }
+
+    .indicator-list li:hover {
+      background-color: #f9f9f9;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    .indicator-list li strong {
+      font-size: 0.85rem;
+      color: #d8572a;
+      margin-bottom: 0.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .indicator-list li span {
+      font-size: 1.1rem !important;
+      font-weight: bold !important;
+      color: #333;
+    }
+
+
     @media (max-width: 800px) {
       .splash {
         flex-direction: column;
@@ -254,6 +296,7 @@
     </section>
 
     <!-- New Section: Selskapsanalyse -->
+    
     <section class="analysis-section">
       <div class="text-column">
         <h1 class="main-heading">Selskapsanalyse</h1>
@@ -261,6 +304,14 @@
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio.
           Praesent libero. Sed cursus ante dapibus diam...
         </p>
+        <ul class="indicator-list">
+        <li><strong>Price/Earning (P/E):</strong><span> 12.5</span></li>
+        <li><strong>Loan (%):</strong><span> 30</span></li>
+        <li><strong>Dividend Yield (%):</strong><span> 4.2</span></li>
+        <li><strong>Market Position:</strong><span> Leader</span></li>
+        <li><strong>Industry Growth (%):</strong><span> 5</span></li>
+      </ul>
+      <br>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dignissim, nulla sed fringilla facilisis, 
           sapien risus faucibus nisi, nec euismod tortor arcu vel libero. Suspendisse potenti. Cras in arcu eros. 
